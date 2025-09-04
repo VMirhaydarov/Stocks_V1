@@ -7,9 +7,16 @@ import com.example.data.network.RetrofitProvider
 import com.example.domain.model.Market
 import com.example.data.network.markets.toMarketList
 import com.example.data.network.markets.toDomain
+import com.example.data.network.engines.toEngineList
+import com.example.domain.model.Engine
 
 class StockRepositoryImpl : IStockRepository {
     private val api = RetrofitProvider.apiService
+
+    override suspend fun getEngines(): List<Engine> {
+        val response = api.getEngines()
+        return response.toEngineList()
+    }
 
     override suspend fun getMarkets(): List<Market> {
         val response = api.getMarkets("stock") // MarketsResponseDto

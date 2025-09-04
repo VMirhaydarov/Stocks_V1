@@ -27,6 +27,13 @@ fun MainScreen(navController: NavController) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Button(
+                onClick = { navController.navigate("engines") },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800)),
+                modifier = Modifier.height(56.dp).width(220.dp)
+            ) {
+                Text(text = "Получить список идентификаторов")
+            }
+            Button(
                 onClick = { navController.navigate("markets") },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800)),
                 modifier = Modifier.height(56.dp).width(220.dp)

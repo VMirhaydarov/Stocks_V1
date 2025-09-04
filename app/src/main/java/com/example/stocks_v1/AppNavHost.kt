@@ -10,6 +10,7 @@ fun AppNavHost() {
     val navController = rememberNavController()
     NavHost(navController, startDestination = "main") {
         composable("main") { MainScreen(navController) }
+        composable("engines") { EnginesScreenWithViewModel() }
         composable("markets") { MarketsScreenWithViewModel() }
         composable("stocks") { StocksScreenWithViewModel() }
     }
