@@ -14,9 +14,14 @@ class EnginesViewModel(
     private val _engines = MutableStateFlow<List<Engine>>(emptyList())
     val engines : StateFlow<List<Engine>> = _engines
 
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading
+
     fun loadEngines() {
         viewModelScope.launch {
+            _isLoading.value = true
             _engines.value = getEnginesUseCase()
+            _isLoading.value = false
         }
     }
 }

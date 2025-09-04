@@ -11,9 +11,14 @@ class MarketsViewModel (private val getMarketsUseCase: GetMarketsUseCase) : View
     private val _markets = MutableStateFlow<List<String>>(emptyList())
     val markets: StateFlow<List<String>> = _markets
 
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading
+
     fun loadMarkets() {
         viewModelScope.launch {
+            _isLoading.value = true
             _markets.value = getMarketsUseCase().map { it.title }
+            _isLoading.value = false
         }
     }
 }
