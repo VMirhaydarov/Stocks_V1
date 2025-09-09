@@ -16,4 +16,3 @@ fun StocksScreenWithViewModel() {
     val stocksViewModel: StocksViewModel = viewModel(factory = factory)
     StocksScreen(viewModel = stocksViewModel)
 }
-

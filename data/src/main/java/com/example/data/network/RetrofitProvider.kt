@@ -6,7 +6,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
 object RetrofitProvider {
-    //private const val BASE_URL = "https://api.example.com/" // TODO Замените на реальный URL
     private const val BASE_URL = "https://iss.moex.com"
 
     val apiService: StockApiService by lazy {

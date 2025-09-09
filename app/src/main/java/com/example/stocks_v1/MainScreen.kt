@@ -31,7 +31,7 @@ fun MainScreen(navController: NavController) {
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800)),
                 modifier = Modifier.height(56.dp).width(220.dp)
             ) {
-                Text(text = "Получить список идентификаторов")
+                Text(text = "Получить список торговых систем")
             }
             Button(
                 onClick = { navController.navigate("markets") },

@@ -12,9 +12,17 @@ class StocksViewModel (private val getStocksUseCase: GetStocksUseCase) : ViewMod
     private val _stocks = MutableStateFlow<List<Stock>>(emptyList())
     val stocks: StateFlow<List<Stock>> = _stocks
 
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading
+
     fun loadStocks() {
         viewModelScope.launch {
-            _stocks.value = getStocksUseCase()
+            _isLoading.value = true
+            try {
+                _stocks.value = getStocksUseCase()
+            } finally {
+                _isLoading.value = false
+            }
         }
     }
 }

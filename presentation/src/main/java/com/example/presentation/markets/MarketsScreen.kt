@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -31,7 +32,7 @@ fun MarketsScreen(viewModel: MarketsViewModel) {
         viewModel.loadMarkets()
     }
 
-    val markets = viewModel.markets.collectAsState()
+    val markets by viewModel.markets.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
 
     if (isLoading) {
@@ -43,24 +44,25 @@ fun MarketsScreen(viewModel: MarketsViewModel) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = 40.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
+                .navigationBarsPadding()
         ) {
             Text(
                 text = "Список рынков",
                 style = MaterialTheme.typography.headlineMedium,
-                color = Color(0xFFFF9800), // оранжевый заголовок
+                color = Color(0xFFFF9800),
                 modifier = Modifier.padding(bottom = 24.dp)
             )
             LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                items(markets.value) { market ->
+                items(markets) { market ->
                     Card(
                         modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFE0B2)) // светло-оранжевый фон карточки
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFE0B2))
                     ) {
-                        Text(
-                            text = market,
-                            style = MaterialTheme.typography.bodyLarge,
-                            modifier = Modifier.padding(20.dp)
-                        )
+                        Column(modifier = Modifier.padding(20.dp)) {
+                            Text(text = "id: ${market.id}", style = MaterialTheme.typography.bodyLarge)
+                            Text(text = "name: ${market.name}", style = MaterialTheme.typography.bodyLarge)
+                            Text(text = "title: ${market.title}", style = MaterialTheme.typography.bodyLarge)
+                        }
                     }
                 }
             }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -38,9 +39,10 @@ fun EnginesScreen(viewModel: EnginesViewModel) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = 40.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
+                .navigationBarsPadding()
         ) {
             Text(
-                text = "Список движков",
+                text = "Список торговых систем",
                 style = MaterialTheme.typography.headlineMedium,
                 color = Color(0xFFFF9800),
                 modifier = Modifier.padding(bottom = 24.dp)
