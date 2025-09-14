@@ -7,11 +7,11 @@ import com.example.domain.usecase.GetStocksUseCase
 import com.example.presentation.stocks.StocksScreen
 import com.example.presentation.stocks.StocksViewModel
 import com.example.presentation.stocks.StocksViewModelFactory
+import com.example.stocks_v1.di.AppComponent
 
 @Composable
 fun StocksScreenWithViewModel() {
-    val repository = StockRepositoryImpl()
-    val getStocksUseCase = GetStocksUseCase(repository)
+    val getStocksUseCase = AppComponent.get().getStocksUseCase()
     val factory = StocksViewModelFactory(getStocksUseCase)
     val stocksViewModel: StocksViewModel = viewModel(factory = factory)
     StocksScreen(viewModel = stocksViewModel)
