@@ -1,4 +1,4 @@
-package com.example.stocks_v1
+package com.example.stocks_v1.ui.screens.markets
 
 import androidx.compose.runtime.Composable
 import com.example.data.repository.StockRepositoryImpl

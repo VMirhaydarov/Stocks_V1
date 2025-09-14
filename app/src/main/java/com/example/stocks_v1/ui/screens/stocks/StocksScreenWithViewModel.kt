@@ -1,4 +1,4 @@
-package com.example.stocks_v1
+package com.example.stocks_v1.ui.screens.stocks
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel

@@ -1,4 +1,4 @@
-package com.example.stocks_v1
+package com.example.stocks_v1.ui.screens.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
