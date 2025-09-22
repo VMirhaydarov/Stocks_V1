@@ -3,6 +3,7 @@ package com.example.presentation.engines
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.Engine
+import com.example.domain.model.Result
 import com.example.domain.usecase.GetEnginesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,10 +18,21 @@ class EnginesViewModel(
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading
 
+    private val _error = MutableStateFlow<String?>(null)
+    val error: StateFlow<String?> = _error
+
     fun loadEngines() {
         viewModelScope.launch {
             _isLoading.value = true
-            _engines.value = getEnginesUseCase()
+            when (val result = getEnginesUseCase()) {
+                is Result.Success -> {
+                    _engines.value = result.data
+                    _error.value = null
+                }
+                is Result.Error -> {
+                    _error.value = ("ОШИБКА СЕТИ: " + result.message)
+                }
+            }
             _isLoading.value = false
         }
     }

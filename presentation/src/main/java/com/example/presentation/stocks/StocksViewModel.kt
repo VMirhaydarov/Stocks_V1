@@ -7,22 +7,31 @@ import com.example.domain.usecase.GetStocksUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import com.example.domain.model.Result
 
-class StocksViewModel (private val getStocksUseCase: GetStocksUseCase) : ViewModel() {
+class StocksViewModel(private val getStocksUseCase: GetStocksUseCase) : ViewModel() {
     private val _stocks = MutableStateFlow<List<Stock>>(emptyList())
     val stocks: StateFlow<List<Stock>> = _stocks
 
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading
 
+    private val _error = MutableStateFlow<String?>(null)
+    val error: StateFlow<String?> = _error
+
     fun loadStocks() {
         viewModelScope.launch {
             _isLoading.value = true
-            try {
-                _stocks.value = getStocksUseCase()
-            } finally {
-                _isLoading.value = false
+            when (val result = getStocksUseCase()) {
+                is Result.Success -> {
+                    _stocks.value = result.data
+                    _error.value = null
+                }
+                is Result.Error -> {
+                    _error.value = ("ОШИБКА СЕТИ: " + result.message)
+                }
             }
+            _isLoading.value = false
         }
     }
 }

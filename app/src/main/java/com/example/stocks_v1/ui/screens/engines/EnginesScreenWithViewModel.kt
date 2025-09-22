@@ -1,6 +1,10 @@
 package com.example.stocks_v1.ui.screens.engines
 
+import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.stocks_v1.di.AppComponent
 import com.example.presentation.engines.EnginesScreen
@@ -12,5 +16,14 @@ fun EnginesScreenWithViewModel() {
     val getEnginesUseCase = AppComponent.get().getEnginesUseCase()
     val factory = EnginesViewModelFactory(getEnginesUseCase)
     val enginesViewModel: EnginesViewModel = viewModel(factory = factory)
+    val error = enginesViewModel.error.collectAsState().value
+    val context = LocalContext.current
+
+    LaunchedEffect(error) {
+        error?.let {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+        }
+    }
+
     EnginesScreen(viewModel = enginesViewModel)
 }
