@@ -1,0 +1,50 @@
+build:
+  maxIssues: 0
+  weights:
+    complexity: 2
+    LongParameterList: 1
+    style: 1
+    comments: 1
+
+processors:
+  active: true
+  exclude:
+    - 'DetektProgressListener'
+
+console-reports:
+  active: true
+
+output-reports:
+  active: true
+  exclude:
+    - 'HtmlOutputReport'
+    - 'XmlOutputReport'
+    - 'TxtOutputReport'
+
+style:
+  MagicNumber:
+    active: false
+  MaxLineLength:
+    active: true
+    value: 120
+  WildcardImport:
+    active: true
+  ForbiddenComment:
+    active: true
+  FunctionNaming:
+    active: true
+  ClassNaming:
+    active: true
+  UnusedImports:
+    active: true
+  UnusedPrivateMember:
+    active: true
+  RedundantVisibilityModifier:
+    active: true
+  SpacingBetweenPackageAndImports:
+    active: true
+  SpacingBetweenImports:
+    active: true
+  OptionalUnit:
+    active: true
+
