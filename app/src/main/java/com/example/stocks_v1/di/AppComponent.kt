@@ -1,17 +1,13 @@
 package com.example.stocks_v1.di
 
-import com.example.domain.usecase.GetEnginesUseCase
-import com.example.domain.usecase.GetMarketsUseCase
-import com.example.domain.usecase.GetStocksUseCase
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
-    fun getEnginesUseCase(): GetEnginesUseCase
-    fun getMarketsUseCase(): GetMarketsUseCase
-    fun getStocksUseCase(): GetStocksUseCase
+    fun inject(activity: com.example.stocks_v1.MainActivity)
+    fun inject(factory: com.example.presentation.stocks.StocksViewModelFactory)
 
     companion object {
         @Volatile
@@ -23,4 +19,3 @@ interface AppComponent {
             }
     }
 }
-

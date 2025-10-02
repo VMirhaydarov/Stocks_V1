@@ -5,19 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
-import com.example.data.repository.StockRepositoryImpl
-import com.example.domain.usecase.GetMarketsUseCase
 import com.example.presentation.markets.MarketsScreen
 import com.example.presentation.markets.MarketsViewModel
 import com.example.presentation.markets.MarketsViewModelFactory
-import com.example.stocks_v1.di.AppComponent
 
 @Composable
-fun MarketsScreenWithViewModel() {
-    val getMarketsUseCase = AppComponent.get().getMarketsUseCase()
-    val factory = MarketsViewModelFactory(getMarketsUseCase)
-    val marketsViewModel : MarketsViewModel = factory.create(MarketsViewModel::class.java)
-
+fun MarketsScreenWithViewModel(factory: MarketsViewModelFactory) {
+    val marketsViewModel: MarketsViewModel = androidx.lifecycle.viewmodel.compose.viewModel(factory = factory)
     val error = marketsViewModel.error.collectAsState().value
     val context = LocalContext.current
 
@@ -27,5 +21,5 @@ fun MarketsScreenWithViewModel() {
         }
     }
 
-    MarketsScreen(viewModel = marketsViewModel)
+    MarketsScreen(marketsViewModel)
 }

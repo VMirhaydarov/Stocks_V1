@@ -3,9 +3,9 @@ package com.example.presentation.markets
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.domain.usecase.GetMarketsUseCase
-import com.example.presentation.stocks.StocksViewModel
+import javax.inject.Inject
 
-class MarketsViewModelFactory (
+class MarketsViewModelFactory @Inject constructor(
     private val getMarketsUseCase: GetMarketsUseCase
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
