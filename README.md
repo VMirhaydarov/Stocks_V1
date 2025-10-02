@@ -25,3 +25,7 @@ markdown
 
 ##  Скриншоты
 <img width="275" height="586" alt="image" src="https://github.com/user-attachments/assets/c0d5e482-c1cd-40cb-a416-b0251d5167c0" />
+<img width="387" height="818" alt="MainScreen" src="https://github.com/user-attachments/assets/3362860d-b258-4881-8aaf-d5a73c8d0912" />
+<img width="384" height="811" alt="EnginesScreen" src="https://github.com/user-attachments/assets/1dae5515-0441-4e7c-b902-9de253aa1e91" />
+<img width="385" height="811" alt="MarketsScreen" src="https://github.com/user-attachments/assets/391f36fd-b1e5-47d4-a7c3-7e3ee5fdd41a" />
+<img width="386" height="818" alt="StocksScreen" src="https://github.com/user-attachments/assets/06ea5271-59b2-4dcd-a282-2a5b053daf0f" />
