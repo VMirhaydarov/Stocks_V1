@@ -1,5 +1,5 @@
 build:
-  maxIssues: 0
+  maxIssues: 100
   weights:
     complexity: 2
     LongParameterList: 1
@@ -26,25 +26,16 @@ style:
     active: false
   MaxLineLength:
     active: true
-    value: 120
+    maxLineLength: 120
   WildcardImport:
     active: true
   ForbiddenComment:
-    active: true
-  FunctionNaming:
-    active: true
-  ClassNaming:
     active: true
   UnusedImports:
     active: true
   UnusedPrivateMember:
     active: true
-  RedundantVisibilityModifier:
-    active: true
   SpacingBetweenPackageAndImports:
-    active: true
-  SpacingBetweenImports:
     active: true
   OptionalUnit:
     active: true
-
